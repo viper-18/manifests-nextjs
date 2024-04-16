@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nextjs-s
+  labels:
+    app: nextjs-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nextjs-app
+  template:
+    metadata:
+      name: nextjs-pod
+      labels:
+        app: nextjs-app
+    spec:
+      containers:
+        - name: nextjs-container
+          image: dharrsankube/dharrsan-portfolio-amd:v1.1
+          ports:
+            - containerPort: 3000
+
